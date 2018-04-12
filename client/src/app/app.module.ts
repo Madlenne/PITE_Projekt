@@ -14,6 +14,26 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GlobalState } from './global.state';
+
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from "angular5-social-login";
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("626445490442-0qkfd28hc8rmtvi4c2kl3iemns08qv3b.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +42,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    SocialLoginModule,
 
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
@@ -30,6 +51,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    { 
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+    GlobalState
   ],
 })
 export class AppModule {

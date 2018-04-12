@@ -4,7 +4,7 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
   selector: 'ngx-search-input',
   styleUrls: ['./search-input.component.scss'],
   template: `
-    <i class="control-icon ion ion-ios-search"
+    <i class="control ion-ios-search" 
        (click)="showInput()"></i>
     <input placeholder="Type your search request here..."
            #input

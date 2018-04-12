@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ngx-admin-demo"
+    "name": "UberTravel"
   },
   "apps": [
     {
@@ -26,7 +26,8 @@
         "../node_modules/socicon/css/socicon.css",
         "../node_modules/nebular-icons/scss/nebular-icons.scss",
         "../node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
-        "./app/@theme/styles/styles.scss"
+        "./app/@theme/styles/styles.scss",
+        "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
       "scripts": [
         "../node_modules/pace-js/pace.min.js"
