@@ -7,7 +7,7 @@ import { LoggedUser } from '../../../commons/loggedUser';
 import { GlobalState } from '../../../global.state';
 import {
   AuthService,
-  GoogleLoginProvider
+  GoogleLoginProvider,
 } from 'angular5-social-login';
 
 @Component({
@@ -69,7 +69,6 @@ export class HeaderComponent implements OnInit {
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log("sign in data : " , userData);
 
         const loggedUser = new LoggedUser(
           userData.id,
@@ -80,8 +79,7 @@ export class HeaderComponent implements OnInit {
         );
 
         this.globalState.notifyDataChanged("loggedUser",loggedUser);
-      }
-    );
+      });
   }
 
   logout() {
@@ -89,7 +87,7 @@ export class HeaderComponent implements OnInit {
       data => {
           this.globalState.notifyDataChanged("loggedUser", undefined);
       }
-    ).catch(e => console.log(e))
+    ).catch(e => e);
   }
 
   viewProfile():void {
