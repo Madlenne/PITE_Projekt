@@ -30,5 +30,3 @@ ng serve
 # default ports:
  - client - localhost:4200
  - server - localhsot:8000
-
-
