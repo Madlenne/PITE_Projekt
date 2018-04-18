@@ -7,7 +7,7 @@ import { ThemeModule } from '../@theme/theme.module';
 import { UserModule } from './user/user.module';
 
 const PAGES_COMPONENTS = [
-  PagesComponent,
+  PagesComponent
 ];
 
 @NgModule({
