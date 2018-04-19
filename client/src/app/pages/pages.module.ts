@@ -5,6 +5,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { UserModule } from './user/user.module';
+import { MapsModule } from '../commons/map/map.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -16,6 +17,7 @@ const PAGES_COMPONENTS = [
     ThemeModule,
     DashboardModule,
     UserModule,
+    MapsModule
   ],
   declarations: [
     ...PAGES_COMPONENTS,

@@ -20,7 +20,7 @@ import {
   SocialLoginModule,
   AuthServiceConfig,
   GoogleLoginProvider,
-  FacebookLoginProvider,
+  FacebookLoginProvider
 } from "angular5-social-login";
 
 export function getAuthServiceConfigs() {
@@ -28,7 +28,7 @@ export function getAuthServiceConfigs() {
       [
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("secret")
+          provider: new GoogleLoginProvider("VGzCRQZqBI-dHomL-cNvEOgU")
         },
       ]
   );
@@ -43,7 +43,6 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     AppRoutingModule,
     SocialLoginModule,
-
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),

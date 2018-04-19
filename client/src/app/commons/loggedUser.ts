@@ -7,6 +7,6 @@ export class LoggedUser {
         public mail: string,
         public imageUrl: string,
         public roles: Array<string> = [],
-    ){}
+    ) {}
 
 }
