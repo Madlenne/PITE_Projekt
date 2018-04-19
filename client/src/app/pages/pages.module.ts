@@ -8,7 +8,7 @@ import { UserModule } from './user/user.module';
 import { MapsModule } from '../commons/map/map.module';
 
 const PAGES_COMPONENTS = [
-  PagesComponent,
+  PagesComponent
 ];
 
 @NgModule({

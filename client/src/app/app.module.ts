@@ -16,6 +16,8 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalState } from './global.state';
 
+import { PlacesService } from './pages/places.service';
+
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -54,7 +56,8 @@ export function getAuthServiceConfigs() {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     },
-    GlobalState
+    GlobalState,
+    PlacesService
   ],
 })
 export class AppModule {

@@ -10,6 +10,9 @@
 # to install:
 - https://nodejs.org/en/download/current/ (nodejs + npm)
 - npm install -g @angular/cli
+- pip install Django==1.11.11
+- pip install djangorestframework==3.8.2
+- pip install django-cors-headers==2.2.0
 
 # commands:
  - run server
@@ -30,3 +33,10 @@ ng serve
 # default ports:
  - client - localhost:4200
  - server - localhsot:8000
+
+# api endpoint
+ - places http://127.0.0.1:8000/api/places/ 
+
+# migrations 
+ - python manage.py makemigrations
+ - python manage.py migrate
