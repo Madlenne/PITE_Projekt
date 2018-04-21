@@ -5,4 +5,4 @@ from rest_framework import serializers
 class PlaceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Place
-        fields = ['title']
+        fields = ['name','photoRef','placeId','vicinty','latitude','longitude']

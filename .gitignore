@@ -45,3 +45,4 @@
 # Owers
 
 *.sqllite3
+server/uberTravel/db.sqlite3
