@@ -7,8 +7,7 @@ import { MapComponent } from './map.component';
   imports: [
     ThemeModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC3e6VDebi6KVuUlh_fnRBcnRyGCdcf9X8',
-      libraries: ['places'],
+      apiKey: 'AIzaSyAPmUdjqfn-8rTlGhGas9_fxfHj1yUKcUk'
     }),
   ],
   exports: [

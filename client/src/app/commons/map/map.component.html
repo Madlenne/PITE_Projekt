@@ -1,4 +1,9 @@
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+    <agm-marker *ngFor="let o of objects"[latitude]="o.latitude" [longitude]="o.longitude">
+        <agm-info-window [isOpen]=true>
+            <p>{{o.name}}</p>
+            <p>{{o.vicinty}}</p>
+            <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=150&photoreference={{o.photoRef}}&key=AIzaSyCHeNSWsQIpvVorhXeQklr2Xh0O9XIm4Aw">
+        </agm-info-window>
+    </agm-marker>
 </agm-map>
-dupa
