@@ -19,5 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^api/places/$', views.PlaceView.as_view(), name='places-list'), 
+    url(r'^api/users/(?P<user_id>.+)/$', views.UserView.as_view(), name='users-list'), 
     url(r'^admin/', admin.site.urls),
 ]

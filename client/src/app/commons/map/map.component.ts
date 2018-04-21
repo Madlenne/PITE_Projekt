@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { AgmMap } from '@agm/core';
-import { PlacesService } from '../../pages/places.service'; 
-import { Place } from  '../../pages/place';
+import { PlacesService } from '../../places.service'; 
+import { Place } from  '../../place';
 
 @Component({
   selector: 'mapbf',

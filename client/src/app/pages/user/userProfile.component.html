@@ -1,1 +1,5 @@
 <user-banner [name]="gtfy" [image]="yguk"></user-banner>
+<nb-card>
+    <label for="isGuide">Enable guide mode:</label>
+    <input #isGuide type="checkbox" (change)="onChange(isGuide.checked)"  />
+</nb-card>
