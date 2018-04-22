@@ -17,6 +17,7 @@
 - pip install djangorestframework==3.8.2
 - pip install django-cors-headers==2.2.0
 - pip install coverage
+
 # commands:
  - run server
 ```
