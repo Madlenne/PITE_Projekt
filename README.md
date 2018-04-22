@@ -19,6 +19,14 @@
 - pip install coverage
 
 # commands:
+ - to see coverage
+insted of: python my_program.py arg1 arg2
+write: coverage run my_program.py arg1 arg2
+
+ - to see the results:
+```
+coverage report -m
+```
  - run server
 ```
 python3 server/uberTravel/manage.py runserver
