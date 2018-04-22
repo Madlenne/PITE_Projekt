@@ -2,8 +2,8 @@ language: python
 python:
         - "3.5.2"
 install:
-        - pip install -r ./server/uberTravel/requirements.txt
+        - pip install -r ./uberTravel/requirements.txt
 script:
-        - python3 ./server/uberTravel/manage.py test api
+        - python3 ./uberTravel/manage.py test api
 after_success:
         - coveralls
