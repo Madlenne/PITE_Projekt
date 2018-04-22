@@ -6,7 +6,6 @@ install:
         - pip install coveralls
 script:
 
-        - python3 ./manage.py test api
-        - coverage run --source=python3 manage.py test api
+        - python3 ./manage.py test api --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
 after_success:
         - coveralls
