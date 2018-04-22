@@ -11,7 +11,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'FEATURES',
     group: true,
   },
-  {
+  /*{
     title: 'Auth',
     icon: 'nb-locked',
     children: [
@@ -32,5 +32,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
+  },*/
+  {
+    title: 'Tourist',
+    icon: 'nb-location',
+    link: '/pages/tourist'
   },
+  {
+    title: 'Guide',
+    icon: 'nb-location',
+    link: '/pages/guide'
+  }
 ];

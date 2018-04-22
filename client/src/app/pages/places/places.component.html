@@ -1,6 +1,6 @@
-<p>
-  places works!
-  <li *ngFor="let place of places">
-    {{place.title}}
-  </li>
-</p>
+<div *ngFor="let place of places">
+  <h4>{{place.name}}</h4>
+  <nb-checkbox>Add to trip</nb-checkbox>
+  <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=500&photoreference={{place.photoRef}}&key=AIzaSyCHeNSWsQIpvVorhXeQklr2Xh0O9XIm4Aw" />
+  <p>{{place.vicinty}}</p>
+</div>
