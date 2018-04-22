@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { User } from './user';
+import { GlobalState } from './global.state';
+import { LoggedUser } from './commons/loggedUser'; 
 const httpOptions = {
   headers: new HttpHeaders({
   'Content-Type': 'application/json'
@@ -10,9 +12,12 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   usersUrl = environment.baseApiUrl + 'api/users/';
-
-  constructor(private http: HttpClient) { }
-
+  logged:LoggedUser;
+  constructor(private http: HttpClient, private global: GlobalState) {
+    this.global.subscribe("loggedUser", user =>{
+      this.logged = user;
+    });
+  }
   getUser(id: number) {
     return this.http.get<User>(this.usersUrl + id + '/');
   }

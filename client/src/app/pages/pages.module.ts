@@ -10,6 +10,7 @@ import { MapsModule } from '../commons/map/map.module';
 import { TouristComponent } from './tourist/tourist.component';
 import { GuideComponent } from './guide/guide.component';
 import { PlacesComponent } from './places/places.component'; 
+import { GlobalState } from '../global.state';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -27,8 +28,10 @@ const PAGES_COMPONENTS = [
     MapsModule
   ],
   declarations: [
-    ...PAGES_COMPONENTS,
+    ...PAGES_COMPONENTS
   ],
+  providers: [
+  ]
 })
 export class PagesModule {
 }
