@@ -17,6 +17,7 @@
 - pip install djangorestframework==3.8.2
 - pip install django-cors-headers==2.2.0
 - pip install -r requirements.txt
+- pip install python-coveralls
 
 # commands:
  - to see coverage
