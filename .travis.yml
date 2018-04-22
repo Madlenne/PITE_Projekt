@@ -10,7 +10,7 @@ script:
         - coverage run --source=python3 manage.py test api
         - coverage erase
         - cd api/
-        - nosetests -xv --nologcapture --with-coverage --cover-package=pycmake test*.py
+        - nosetests -xv --nologcapture --with-coverage --cover-package=PITE_Projket test*.py
         - coverage combine
         - coverage report -m
         - cp .coverage ../
