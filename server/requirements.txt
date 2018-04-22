@@ -1,0 +1,8 @@
+Django==1.11.1
+django-cors-headers==2.2.0
+djangorestframework==3.8.2
+gunicorn==19.7.1
+pipenv==10.1.2
+postgres==2.2.1
+psycopg2==2.7.1
+whitenoise==3.3.1
