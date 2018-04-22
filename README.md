@@ -16,8 +16,17 @@
 - pip install Django==1.11.11
 - pip install djangorestframework==3.8.2
 - pip install django-cors-headers==2.2.0
+- pip install coverage
 
 # commands:
+ - to see coverage
+insted of: python my_program.py arg1 arg2
+write: coverage run my_program.py arg1 arg2
+
+ - to see the results:
+```
+coverage report -m
+```
  - run server
 ```
 python3 server/uberTravel/manage.py runserver
