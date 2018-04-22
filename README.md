@@ -1,4 +1,4 @@
-# UberTravel
+# UberTravel [![Build Status](https://travis-ci.org/BMichalskiPITE/PITE_Projekt.svg?branch=master)](https://travis-ci.org/BMichalskiPITE/PITE_Projekt)
 
 # prefered requirements:
  - python: 3.5.2
