@@ -1,5 +1,8 @@
 # UberTravel [![Build Status](https://travis-ci.org/BMichalskiPITE/PITE_Projekt.svg?branch=master)](https://travis-ci.org/BMichalskiPITE/PITE_Projekt)
 
+<a href='https://coveralls.io/github/BMichalskiPITE/PITE_Projekt?branch=master'><img src='https://coveralls.io/repos/github/BMichalskiPITE/PITE_Projekt/badge.svg?branch=master' alt='Coverage Status' /></a>
+
+
 # prefered requirements:
  - python: 3.5.2
  - npm: 5.6.0
