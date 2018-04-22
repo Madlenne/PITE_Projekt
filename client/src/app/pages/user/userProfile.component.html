@@ -1,5 +1,8 @@
 <user-banner [name]="gtfy" [image]="yguk"></user-banner>
 <nb-card>
-    <label for="isGuide">Enable guide mode:</label>
-    <input #isGuide type="checkbox" (change)="onChange(isGuide.checked)"  />
+    <div>
+        <nb-checkbox [(ngModel)]="userIsGuide">Enabled guide mode?</nb-checkbox>
+        <br>
+        <button class="btn" (click)="submitUserSettings()">Save settings</button>
+    </div>
 </nb-card>
