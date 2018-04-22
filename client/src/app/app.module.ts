@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalState } from './global.state';
 
 import { PlacesService } from './places.service'
+import { UserService } from './user.service'
 
 import {
   SocialLoginModule,
@@ -57,7 +58,8 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     },
     GlobalState,
-    PlacesService
+    PlacesService,
+    UserService
   ],
 })
 export class AppModule {
