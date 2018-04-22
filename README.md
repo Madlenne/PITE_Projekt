@@ -16,7 +16,13 @@
 - pip install Django==1.11.11
 - pip install djangorestframework==3.8.2
 - pip install django-cors-headers==2.2.0
-
+- pip install coverage
+```
+to gather data write 
+coverage run my_program.py arg1 arg2
+insted of python my_program.py arg1 arg2
+use coverage report -m to see results
+```
 # commands:
  - run server
 ```
