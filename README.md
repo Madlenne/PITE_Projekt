@@ -56,3 +56,6 @@ ng serve
  
  # travis-ci
  - https://travis-ci.org/BMichalskiPITE/PITE_Projekt
+
+# heroku deployment
+- https://ubertravel.herokuapp.com/
