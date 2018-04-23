@@ -3,11 +3,6 @@ python:
         - "3.5.2"
 install:
         - pip install -r ./requirements.txt
-        - pip install coveralls
 script:
-
         - python3 ./manage.py test api
-        - coverage run --source=python3 manage.py test api
-        
-after_success:
-        - coveralls
+
