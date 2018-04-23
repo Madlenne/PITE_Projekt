@@ -7,7 +7,6 @@ import { UserProfileComponent } from './user/userProfile.component';
 import { GuideComponent } from "./guide/guide.component";
 import { TouristComponent } from "./tourist/tourist.component";
 import { TouristAuthGuard, GuideAuthGuard} from '../authGuard';
-import { GlobalState } from '../global.state';
 
 const routes: Routes = [{
   path: '',
@@ -45,8 +44,7 @@ const routes: Routes = [{
   exports: [RouterModule],
   providers: [
     TouristAuthGuard,
-    GuideAuthGuard,
-    GlobalState
+    GuideAuthGuard
   ]
 })
 export class PagesRoutingModule {
