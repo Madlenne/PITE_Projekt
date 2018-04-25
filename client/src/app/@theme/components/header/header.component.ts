@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
-import { UserService } from '../../../@core/data/users.service';
+import { UserService } from '../../../user.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
 import { LoggedUser } from '../../../commons/loggedUser';
 import { GlobalState } from '../../../global.state';
@@ -9,6 +9,7 @@ import {
   AuthService,
   GoogleLoginProvider,
 } from 'angular5-social-login';
+
 
 @Component({
   selector: 'ngx-header',
@@ -69,7 +70,7 @@ export class HeaderComponent implements OnInit {
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-
+        
         const loggedUser = new LoggedUser(
           userData.id,
           userData.idToken,
@@ -79,6 +80,12 @@ export class HeaderComponent implements OnInit {
         );
 
         this.globalState.notifyDataChanged("loggedUser",loggedUser);
+        this.userService.getUser(+loggedUser.id).toPromise()
+        .then(u => {
+          loggedUser.is_guide = u.is_guide;
+          this.globalState.notifyDataChanged("loggedUser",loggedUser);
+        })
+        .catch(e => console.log(e));
       });
   }
 

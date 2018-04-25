@@ -18,7 +18,6 @@ import { GlobalState } from './global.state';
 
 import { PlacesService } from './places.service'
 import { UserService } from './user.service'
-
 import {
   SocialLoginModule,
   AuthServiceConfig,

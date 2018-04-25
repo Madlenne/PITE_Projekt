@@ -7,6 +7,7 @@ export class LoggedUser {
         public mail: string,
         public imageUrl: string,
         public roles: Array<string> = [],
+        public is_guide: Boolean = false
     ) {}
 
 }
