@@ -3,24 +3,9 @@ python:
         - "3.5.2"
 install:
         - pip install -r ./requirements.txt
-        - pip install python-coveralls
-
-before_script:
-        - git clone https://github.com/BMichalskiPITE/PITE_Projekt
-        - cd PITE_Projekt
-        - git checkout
-        - test*.py --cov=PITE_Projekt
-        - cd -
+        - pip install coveralls
 script:
-
         - python3 ./manage.py test api
-        - coverage run --source=python3 manage.py test api
-        - coverage erase
-        - cd api/
-        - coverage combine
-        - coverage report -m
-        - cp .coverage ../
-        - cd ..
-        - coverage report -m
+        - coverage run --source=./ manage.py test
 after_success:
         - coveralls
