@@ -5,7 +5,7 @@ install:
         - pip install -r ./requirements.txt
         - pip install coveralls
 script:
-        - coverage run --source=python3 manage.py test api
+        - coverage run --source= manage.py test api
         - python3 ./manage.py test api
 after_success:
         - coveralls
