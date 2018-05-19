@@ -1,0 +1,58 @@
+<nb-card>
+    <nb-card-header>
+      Trip details!
+    </nb-card-header>
+</nb-card>
+<div class="row show-grid">
+    <div class="col-12 col-sm-6 col-md-6">
+        <nb-card>
+            <nb-card-header>
+                Map with selected places
+            </nb-card-header>
+            <nb-card-body>
+                <mapbf [places]="details.places"></mapbf>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-6 col-md-6">
+        <nb-card>
+            <nb-card-header>
+                Details
+            </nb-card-header>
+            <nb-card-body>
+                <div class="input-group place">
+                    <h2>{{details.tripName}}</h2>
+                </div>
+                <div class="input-group place">
+                    <p>{{details.tripDescription}}</p>
+                </div>
+                <div class="row show-grid place" *ngFor="let place of details.places" >
+                    <div class="col-5">
+                        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=150&photoreference={{place.photoRef}}&key=AIzaSyCHeNSWsQIpvVorhXeQklr2Xh0O9XIm4Aw">                            
+                    </div>
+                    <div class="col-7">
+                        <p>{{place.name}}</p>
+                    </div>
+                </div>
+                <h2 *ngIf="details.guides" class="guides">Proposed guides</h2>
+                <div class="row show-grid guides" *ngFor = "let guide of details.guides">
+                    <div class="col-4 col-md-4">
+                        <strong>{{guide.username}}</strong>
+                    </div>
+                    <div class="col-1 col-md-1">
+                        {{guide.grade}}pkt
+                    </div>
+                    <div class="col-3 col-md-3">
+                        <button (click)="redirectGuide(guide.id)" class="btn btn-primary info">Details</button>
+                    </div>
+                    <div class="col-4 col-md-4" *ngIf="!guide.selected">
+                        <button (click)="selectGuide(guide.id)" class="btn btn-primary info">Select</button>
+                    </div>
+                    <div class="col-4 col-md-4" *ngIf="guide.selected">
+                        <h3>Selected!</h3>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

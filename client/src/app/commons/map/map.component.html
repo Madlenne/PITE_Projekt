@@ -3,6 +3,7 @@
         <agm-info-window [isOpen]=true>
             <p>{{o.name}}</p>
             <p>{{o.vicinty}}</p>
+            <p *ngIf="!isSelected(o) && selectable" (click)="selectPlace(o)">Select</p>
             <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=150&photoreference={{o.photoRef}}&key=AIzaSyCHeNSWsQIpvVorhXeQklr2Xh0O9XIm4Aw">
         </agm-info-window>
     </agm-marker>

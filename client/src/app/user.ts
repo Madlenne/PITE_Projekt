@@ -1,4 +1,4 @@
 export interface User{
-    user_id: Number;
-    is_guide: Boolean;
+    user_id: number;
+    is_guide: boolean;
     }

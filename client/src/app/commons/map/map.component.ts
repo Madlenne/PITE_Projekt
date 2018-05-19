@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { AgmMap } from '@agm/core';
 import { PlacesService } from '../../places.service'; 
 import { Place } from  '../../place';
@@ -10,30 +10,42 @@ import { Place } from  '../../place';
 })
 export class MapComponent implements OnInit {
 
-  places: Place[];
-
+  @Output() onSelect = new EventEmitter<Place>();
+  @Input() selectedIds:string[] = [];
+  @Input() places: Place[];
+  @Input() selectable:Boolean = false;
   constructor(private placesService: PlacesService) { }
 
   ngOnInit() {
-    this.showPlaces();
+    if(!this.places)
+      this.showPlaces();
   }
 
   showPlaces() {
     this.placesService.getPlaces()
       .subscribe(
         data => { 
-        console.dir(data);
+        console.log(data);
         this.places = data;
       },
       error => alert('Error when loading data: ' + JSON.stringify(error))
     );
   }
   
+  isSelected(place:Place):boolean {
+    return this.selectedIds.indexOf(place.placeId,0) !== -1;
+  }
+
   @ViewChild(AgmMap)
   public agmMap: AgmMap
   
   lat = 50.0645311;
   lng = 19.9371252;
+
+  selectPlace(place:Place):void {
+    this.onSelect.emit(place);
+    console.log(this.selectedIds);
+  }
 
 }
 

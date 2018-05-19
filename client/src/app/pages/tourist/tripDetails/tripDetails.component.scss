@@ -1,0 +1,27 @@
+@import '../../../@theme/styles/themes';
+@include nb-install-component() {
+    img {
+        width: 100%;
+        height: auto;
+    }
+    nb-card-body {
+      padding: 0;
+    }
+    nb-card {
+        width: 100%;
+    }
+  
+    /deep/ agm-map {
+      width: 100%;
+      height: nb-theme(card-height-large);
+    }
+  }
+  .place{
+      padding: 0.5vw;
+  }
+  .register  {
+      margin: 0.5vw;
+  }
+  .guides {
+      padding: 0.5vw;
+  }

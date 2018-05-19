@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { User } from './user';
-import { GlobalState } from './global.state';
+import { GlobalState } from './shared/global.state';
 import { LoggedUser } from './commons/loggedUser'; 
 const httpOptions = {
   headers: new HttpHeaders({

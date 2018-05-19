@@ -1,0 +1,19 @@
+<nb-card>
+    <nb-card-header>
+      Your trips
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row show-grid row"  *ngFor="let trip of trips">
+            <div class="col-4 col-md-4">
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference={{trip.place.photoref}}&key=AIzaSyCHeNSWsQIpvVorhXeQklr2Xh0O9XIm4Aw">                            
+            </div>
+            <div class="col-5 col-md-5">
+                <h2>{{trip.tripName}}</h2>
+                <p>{{trip.tripDescription}}</p>
+            </div>
+            <div class="col-3 col-md-3">
+                <button (click)="redirect(trip.tripId)" class="btn btn-primary info">Details</button>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

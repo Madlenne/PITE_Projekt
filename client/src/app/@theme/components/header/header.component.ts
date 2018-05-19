@@ -4,11 +4,14 @@ import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserService } from '../../../user.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
 import { LoggedUser } from '../../../commons/loggedUser';
-import { GlobalState } from '../../../global.state';
+import { GlobalState } from '../../../shared/global.state';
 import {
-  AuthService,
+  AuthService as SocialAuthService,
   GoogleLoginProvider,
 } from 'angular5-social-login';
+import { AuthService } from '../../../shared/auth.service';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -16,35 +19,32 @@ import {
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
 
   @Input() position = 'normal';
   user: LoggedUser;
-  subscription:any;
+  subscription:Subscription;
   userMenu = [{ title: 'Profile' }, { title: 'Log out', link: 'logout' }];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
-              private userService: UserService,
+              private authService: AuthService,
               private analyticsService: AnalyticsService,
-              private socialAuthService: AuthService,
-              private globalState: GlobalState,
+              private socialAuthService: SocialAuthService,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.globalState.subscribe('loggedUser', (user) => {
+    this.subscription = this.authService.subscribeLoggedUser().subscribe( user => {
       this.user = user;
     });
     
-    this.subscription = this.menuService.onItemClick().subscribe(e => {
-      if(e.item && e.item.title === 'Log out'){
-        this.socialAuthService.signOut().then(result => {
-          this.globalState.notifyDataChanged("loggedUser", undefined);
-        });
-      }
-    });
+    
+  }
+
+  ngOnDestroy():void {
+    this.subscription.unsubscribe();
   }
 
   toggleSidebar(): boolean {
@@ -78,21 +78,14 @@ export class HeaderComponent implements OnInit {
           userData.email,
           userData.image
         );
-
-        this.globalState.notifyDataChanged("loggedUser",loggedUser);
-        this.userService.getUser(+loggedUser.id).toPromise()
-        .then(u => {
-          loggedUser.is_guide = u.is_guide;
-          this.globalState.notifyDataChanged("loggedUser",loggedUser);
-        })
-        .catch(e => console.log(e));
+        this.authService.setLoggedUser(loggedUser);
       });
   }
 
   logout() {
     this.socialAuthService.signOut().then(
       data => {
-          this.globalState.notifyDataChanged("loggedUser", undefined);
+          this.authService.logout();
       }
     ).catch(e => e);
   }

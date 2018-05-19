@@ -1,8 +1,3 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
 import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { GlobalState } from './global.state';
 
 import { PlacesService } from './places.service'
 import { UserService } from './user.service'
@@ -24,6 +18,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from "angular5-social-login";
+import { SharedModule } from './shared/shared.module';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -48,6 +43,7 @@ export function getAuthServiceConfigs() {
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
+    SharedModule.forRoot()
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -56,7 +52,6 @@ export function getAuthServiceConfigs() {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     },
-    GlobalState,
     PlacesService,
     UserService
   ],
