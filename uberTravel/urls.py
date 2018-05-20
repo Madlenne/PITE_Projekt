@@ -18,7 +18,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^api/places/$', views.PlaceView.as_view(), name='places-list'), 
-    url(r'^api/users/(?P<user_id>.+)/$', views.UserView.as_view(), name='users-list'), 
+    url(r'^api/places/$', views.PlaceView.as_view(), name='places-list'),
+    url(r'^api/users/$', views.UserView.as_view(), name='users-list'), 
+    url(r'^api/places/(?P<placeId>.+)/$', views.PlaceRudView.as_view(), name='places-rud'), 
+    url(r'^api/users/(?P<user_id>.+)/$', views.UserRudView.as_view(), name='users-rud'), 
     url(r'^admin/', admin.site.urls),
 ]
