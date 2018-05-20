@@ -31,4 +31,14 @@ class Migration(migrations.Migration):
                 ('is_guide', models.BooleanField(default=False)),
             ],
         ),
+        migrations.CreateModel(
+            name='Trip',
+            fields=[
+                ('userId', models.CharField(max_length=200,primary_key=True)),
+                ('tripName', models.CharField(max_length=200, default="None")),
+                ('tripDescription', models.CharField(max_length=500, default="None")),
+                ('guides', models.ManyToManyField(to='api.User')),
+                ('places', models.ManyToManyField(to='api.Place')),
+            ],
+        ),
     ]
