@@ -91,6 +91,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   viewProfile():void {
-    this.router.navigate(['/pages/profile']);
+    this.router.navigate(['/profile',this.user.id]);
   }
 }

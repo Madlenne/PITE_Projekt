@@ -14,6 +14,8 @@ import { GlobalState } from '../shared/global.state';
 import { AddTripComponent } from './tourist/addTrip/addTrip.component';
 import { AllTripsComponent } from './tourist/allTrips/allTrips.component';
 import { TripDetailsComponent } from './tourist/tripDetails/tripDetails.component';
+import { FindTripsComponent } from './guide/findTrips/findTrips.component';
+import { GuideTripsComponent } from './guide/trips/guideTrips.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -23,6 +25,8 @@ const PAGES_COMPONENTS = [
   AddTripComponent,
   AllTripsComponent,
   TripDetailsComponent,
+  FindTripsComponent,
+  GuideTripsComponent,
 ];
 
 @NgModule({

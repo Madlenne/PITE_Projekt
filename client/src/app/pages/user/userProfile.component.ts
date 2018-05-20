@@ -1,18 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'user-profile',
   templateUrl: './userProfile.component.html',
 })
-export class UserProfileComponent{
+export class UserProfileComponent implements OnInit{
+
+  user = {
+    id: "id",
+    username: "nazwa usera",
+    mail: "mail",
+    grade: 4.54
+  }
 
   constructor(
     private authService: AuthService
   ) {}
   
-  submitUserSettings(){//TODO auth , redirect user when he's not loggedin
+  public ngOnInit():void {
+
+  }
+  
+  submitUserSettings(){
     
   }
   
+  private isLogged():boolean {
+    return this.user.id == this.authService.getLoggedUser().id;
+  }
 }

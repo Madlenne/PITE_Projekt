@@ -11,6 +11,8 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { AddTripComponent } from './tourist/addTrip/addTrip.component';
 import { AllTripsComponent } from './tourist/allTrips/allTrips.component';
 import { TripDetailsComponent } from './tourist/tripDetails/tripDetails.component';
+import { FindTripsComponent } from './guide/findTrips/findTrips.component';
+import { GuideTripsComponent } from './guide/trips/guideTrips.component';
 
 const routes: Routes = [{
   path: '',
@@ -26,7 +28,7 @@ const routes: Routes = [{
       pathMatch: 'full',
     },
     {
-      path:'profile',
+      path:'profile/:id',
       component: UserProfileComponent,
       // canActivate: [TouristAuthGuard]
     },
@@ -54,11 +56,11 @@ const routes: Routes = [{
       children:[
         {
           path:'find',
-          component: AddTripComponent,
+          component: FindTripsComponent,
         },
         {
           path:'trips',
-          component: AllTripsComponent
+          component: GuideTripsComponent
         }
       ]
     }

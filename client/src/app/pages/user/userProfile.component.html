@@ -1,7 +1,12 @@
 <nb-card>
-    <div>
-        <nb-checkbox [(ngModel)]="userIsGuide">Enabled guide mode?</nb-checkbox>
-        <br>
-        <button class="btn" (click)="submitUserSettings()">Save settings</button>
-    </div>
+    <nb-card-header>
+        {{user.username}}
+    </nb-card-header>
+    <nb-card-body>
+        <div>
+            <nb-checkbox [(ngModel)]="userIsGuide">Enabled guide mode?</nb-checkbox>
+            <br>
+            <button class="btn" (click)="submitUserSettings()">Save settings</button>
+        </div>
+    </nb-card-body>
 </nb-card>
