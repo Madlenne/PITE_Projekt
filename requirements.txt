@@ -1,6 +1,7 @@
 Django==1.11.1
 django-cors-headers==2.2.0
 djangorestframework==3.8.2
+djangorestframework-jwt==1.11.0
 gunicorn==19.7.1
 pipenv==10.1.2
 postgres==2.2.1
