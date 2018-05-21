@@ -5,6 +5,8 @@ install:
         - pip install -r ./requirements.txt
         - pip install coveralls
 script:
-        - coverage run --source=./ manage.py test api
+        - coverage run --source=./ manage.py test user
+        - coverage run --source=./ manage.py test place
+        - coverage run --source=./ manage.py test trip
 after_success:
         - coveralls
