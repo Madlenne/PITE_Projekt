@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from api.models import Place
 from api.models import User as User_model
 from rest_framework.reverse import reverse
+from .views import TripView
 
 User = get_user_model()
 
@@ -24,6 +25,10 @@ class PlaceTestCase(APITestCase):
         user_m = User_model.objects.create(
             user_id = '24f',
             is_guide = True
+            )
+        user_tourist = User_model.objects.create(
+            user_id = '13',
+            is_guide = False
             )
 
     def test_single_user(self):
@@ -85,5 +90,20 @@ class PlaceTestCase(APITestCase):
         url = reverse("users-list")
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    ##########################################################################################
+    def test_add_item_trip(self):
+        data = {
+            'userId' : '13',
+            'tripName' : 'kazimierz',
+            'tripDescription' : 'wycieczka',
+            'places' : [
+                'ChIJjUf7MRBbFkcRg9Ls9752tqU'
+            ]
+        }
+        url = reverse("trips-list")
+        response = self.client.post(url, data, format='json')
+        self.assertJSONEqual(str(response.content,encoding='utf8'),{'tripId': '13'})
+        self.assertEqual(response.status_code,200)
 
 
