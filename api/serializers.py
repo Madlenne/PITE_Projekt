@@ -47,9 +47,11 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This user already exists")
 
 class TripSerializer(serializers.ModelSerializer):
+    url         = serializers.SerializerMethodField(read_only = True)
     class Meta:
         model = Trip
         fields = [
+        'url',
         'pk',
         'userId',
         'tripName',
@@ -59,6 +61,10 @@ class TripSerializer(serializers.ModelSerializer):
         ]
 
         read_only_fields = ['userId']
+
+    def get_url(self,obj):
+        request = self.context.get("request")
+        return obj.get_api_url(request=request)
 
     def validate_name(self,value):
         qs = Trip.objects.filter(tripName__iexact=value).filter(userId__iexact=value)

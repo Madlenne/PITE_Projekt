@@ -36,3 +36,6 @@ class Trip(models.Model):
 
     def __str__(self):
         return str(self.tripName)
+
+    def get_api_url(self, request = None):
+        return reverse("trips-rud", kwargs ={'pk': self.pk}, request = request)
