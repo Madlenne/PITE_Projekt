@@ -37,8 +37,10 @@ class UserView(APIView):
 
 from rest_framework import generics, mixins
 from api.models import Place, User, Trip
+from api.forms import TripForm
 from api.serializers import PlaceSerializer,UserSerializer, TripSerializer
 from django.db.models import Q
+from django.http import JsonResponse
 
 class PlaceView(mixins.CreateModelMixin, generics.ListAPIView):
     pass
@@ -89,8 +91,15 @@ class TripView(mixins.CreateModelMixin, generics.ListAPIView):
             qs = qs.filter(Q(tripName__icontains=query))
         return qs
 
-    def post(self,request,*args,**kwargs):
-        return self.create(request, *args, **kwargs)
+    def post(self,request):
+        if request.method == "POST":
+            form = TripForm(request.data)
+            if form.is_valid():
+                trip = form.save()
+                trip.save()
+                return JsonResponse({'tripId' : trip.pk})
+            else:
+                 return JsonResponse({'trip': form.errors}, status=422)
 
     def get_serializer_context(self, *args, **kwargs):
         return {"request": self.request}
