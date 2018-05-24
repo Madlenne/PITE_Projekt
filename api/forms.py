@@ -10,3 +10,10 @@ class TripForm(forms.ModelForm):
             'tripDescription',
             'places',
             )
+
+class AllTripsGetForm(forms.ModelForm):
+    class Meta:
+        model = Trip
+        fields = (
+            'userId',
+            )

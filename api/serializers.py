@@ -60,7 +60,6 @@ class TripSerializer(serializers.ModelSerializer):
         'guides'
         ]
 
-        read_only_fields = ['userId']
 
     def get_url(self,obj):
         request = self.context.get("request")
