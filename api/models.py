@@ -28,7 +28,7 @@ class User(models.Model):
         return reverse("users-rud", kwargs ={'user_id': self.user_id}, request = request)
 
 class Trip(models.Model):
-    userId = models.CharField(max_length=200,primary_key=True)
+    userId = models.CharField(max_length=200, default="None")
     tripName = models.CharField(max_length=200, default="None")
     tripDescription = models.CharField(max_length=500, default="None")
     places = models.ManyToManyField(Place)

@@ -34,7 +34,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Trip',
             fields=[
-                ('userId', models.CharField(max_length=200,primary_key=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('userId', models.CharField(default='None', max_length=200)),
                 ('tripName', models.CharField(max_length=200, default="None")),
                 ('tripDescription', models.CharField(max_length=500, default="None")),
                 ('guides', models.ManyToManyField(to='api.User')),

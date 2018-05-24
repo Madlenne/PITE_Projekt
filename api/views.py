@@ -37,10 +37,12 @@ class UserView(APIView):
 
 from rest_framework import generics, mixins
 from api.models import Place, User, Trip
-from api.forms import TripForm
+from api.forms import TripForm, AllTripsGetForm
 from api.serializers import PlaceSerializer,UserSerializer, TripSerializer
 from django.db.models import Q
 from django.http import JsonResponse
+from django.core import serializers
+
 
 class PlaceView(mixins.CreateModelMixin, generics.ListAPIView):
     pass
@@ -86,9 +88,12 @@ class TripView(mixins.CreateModelMixin, generics.ListAPIView):
 
     def get_queryset(self):
         qs = Trip.objects.all()
-        query = self.request.GET.get("q")
+        query = self.request.GET.get("userid")
         if query is not None:
-            qs = qs.filter(Q(tripName__icontains=query))
+            qs = qs.filter(Q(userId__icontains=query))
+        query = self.request.GET.get("tripid")
+        if query is not None:
+            qs = qs.filter(Q(pk__icontains=query))
         return qs
 
     def post(self,request):

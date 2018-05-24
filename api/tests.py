@@ -3,6 +3,7 @@ from rest_framework.test import APIRequestFactory,APIClient,APITestCase
 from django.contrib.auth import get_user_model
 from api.models import Place
 from api.models import User as User_model
+from api.models import Trip
 from rest_framework.reverse import reverse
 from .views import TripView
 
@@ -30,6 +31,13 @@ class PlaceTestCase(APITestCase):
             user_id = '13',
             is_guide = False
             )
+
+        trip = Trip.objects.create(
+            userId = '13',
+            tripName = 'random name',
+            tripDescription = 'decsription',
+            )
+        trip.places.add(place)
 
     def test_single_user(self):
         user_count = User.objects.count()
@@ -103,7 +111,9 @@ class PlaceTestCase(APITestCase):
         }
         url = reverse("trips-list")
         response = self.client.post(url, data, format='json')
-        self.assertJSONEqual(str(response.content,encoding='utf8'),{'tripId': '13'})
+        self.assertJSONEqual(str(response.content,encoding='utf8'),{'tripId': 2})
         self.assertEqual(response.status_code,200)
 
+    def test_get_all_items_per_user_trip(self):
+        response = self.client.get('/api/trips/?userid=13')
 
