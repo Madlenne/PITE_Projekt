@@ -36,17 +36,60 @@
                 </div>
                 <h2 *ngIf="details.guides" class="guides">Proposed guides</h2>
                 <div class="row show-grid guides" *ngFor = "let guide of details.guides">
-                    <div class="col-4 col-md-4">
+                    <div class="col-3 col-md-3">
                         <strong>{{guide.username}}</strong>
                     </div>
-                    <div class="col-1 col-md-1">
+                   <!-- <div class="col-1 col-md-1">
                         {{guide.grade}}pkt
-                    </div>
+                    </div> -->
                     <div class="col-3 col-md-3">
-                        <button (click)="redirectGuide(guide.id)" class="btn btn-primary info">Details</button>
+                    <ng-template #content let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title">{{guide.username}}</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                         <div class="modal-body">
+                            <p>grade: {{guide.grade}}pkt</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary" (click)="c('Close click')">Close</button>
+                        </div>
+                    </ng-template>
+
+                    <button class="btn btn-lg btn-primary" (click)="open(content)">Details</button>
+
+                    <hr>
+
+                    <!--<pre>{{closeResult}}</pre> -->
+                       <!-- <button (click)="redirectGuide(guide.id)" class="btn btn-primary info">Details</button> -->
+                                    <!-- Przycisk uruchamiający modal -->
+                       <!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" (click)="open(content)">
+                        Details
+                        </button>
+
+                         Modal 
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" (click)="d('Cross click')"><span aria-hidden="true">&times;</span><span class="sr-only">Zamknij</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Tytuł okienka pop-up</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Zawartość okienka pop-up</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="c('Close click')">Zamknij</button>
+                                </div>
+                            </div>
+                        </div> 
+                        </div> -->
                     </div>
                     <div class="col-4 col-md-4" *ngIf="!guide.selected">
-                        <button (click)="selectGuide(guide.id)" class="btn btn-primary info">Select</button>
+                        <button (click)="selectGuide(guide)" class="btn btn-primary info">Select</button>
+                        {{guide.selected}}
                     </div>
                     <div class="col-4 col-md-4" *ngIf="guide.selected">
                         <h3>Selected!</h3>
